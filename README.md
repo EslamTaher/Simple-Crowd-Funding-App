@@ -34,5 +34,6 @@ The user can create a project fund raise campaign which contains:
 
 3 – Search:
 Users can search for projects by name or start date
+
 4 – Delete:
 Users can delete their own projects only
