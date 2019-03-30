@@ -12,13 +12,19 @@ class User:
     # Create User - Registration
     def create_user(self, firstName, lastName, email, password, phoneNumber):
         newUserDocument = {
-            'firsName': firstName,
+            'firstName': firstName,
             'lastName': lastName,
             'email': email,
             'password': password,
             'phoneNumber': phoneNumber
         }
-        return self.userCollection.insert_one(newUserDocument).inserted_id
+        checkDocument = {
+            'email': email,
+        }
+        if not self.userCollection.find_one(checkDocument):
+            return self.userCollection.insert_one(newUserDocument).inserted_id
+        else:
+            return False
 
     # Delete UserByEmail - Remove User
     def deleteUserByEmail(self, userEmail):
@@ -33,5 +39,9 @@ class User:
             'email': email,
             'password': password
         }
-        return self.crowdFundingDatabase.userCollection.find_one(findOneUserDocument)
+        userData = self.userCollection.find(findOneUserDocument)
+        userDocumentation = {}
+        for property in userData:
+            userDocumentation = property
 
+        return userDocumentation

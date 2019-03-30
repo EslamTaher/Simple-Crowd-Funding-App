@@ -2,7 +2,7 @@
 class UserSession:
 
     def __init__(self, _id, firstName, lastName, email, password, phoneNumber):
-        self._id = _id
+        self.userId = _id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email

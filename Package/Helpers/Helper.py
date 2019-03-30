@@ -10,10 +10,11 @@ class Helper:
                 return True
         return False
 
-    # phoneNumber validator
+    # phoneNumber validator - 01(01245)
     def phone_number_validator(self, phoneNumber):
         if len(phoneNumber) > 7:
-            if re.match("r'^(?:\+?44)?[07]\d{9,13}$'", phoneNumber) is not None:
+            if re.match("^01[01245][0-9]{8}$", phoneNumber) is not None:
+                # if re.match("r'^(?:\+?44)?[07]\d{9,13}$'", phoneNumber) is not None:
                 return True
         return None
 

@@ -22,9 +22,9 @@ class Project:
         return self.projectCollection.insert_one(newProjectDocument).inserted_id
 
     # View All Project
-    def findAllProject(self):
-        allProjectsDictionry = {[]}
-        for project in self.projectCollection.find():
+    def findAllProject(self, userId):
+        allProjectsDictionry = {}
+        for project in self.projectCollection.find({'userId': userId}):
             projectDictionry = {
                 'title': project['title'],
                 'details': project['details'],
@@ -34,6 +34,12 @@ class Project:
             }
             allProjectsDictionry[projectDictionry['title']] = projectDictionry
         return allProjectsDictionry
+
+    def findOneProject(self, userId, title):
+        return self.projectCollection.find_one({
+            'userId': userId,
+            'title': title
+        })
 
     # Delete One Project For One User
     def deleteOneProject(self, userID, projectTitle):
@@ -47,5 +53,3 @@ class Project:
         return self.projectCollection.delete({
             'userId': ObjectId(userID),
         })
-
-
