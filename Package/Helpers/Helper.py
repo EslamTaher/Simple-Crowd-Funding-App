@@ -24,6 +24,13 @@ class Helper:
         else:
             return False
 
+    # Not Empty String
+    # def notEmpty(self, string_statement):
+    #     if string_statement:
+    #         return True
+    #     else:
+    #         return False
+
     # Display Data
     def display_data(self, dataCollection):
         return None
